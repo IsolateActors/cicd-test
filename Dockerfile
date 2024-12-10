@@ -4,11 +4,11 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
-# 启用 corepack
-RUN corepack enable
+#设置npm源
+RUN npm config set registry https://registry.npmmirror.com
 
-# 启用 pnpm
-RUN corepack enable pnpm
+# 安装 pnpm
+RUN npm install -g pnpm
 
 # 安装依赖
 RUN pnpm install
